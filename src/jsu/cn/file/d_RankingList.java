@@ -124,6 +124,7 @@ public class d_RankingList {
 	/**
 	 * Closing. 关闭所有资源
 	 */
+	//dafaf
 	private void closing() {
 		if (bw != null) {
 			try {
