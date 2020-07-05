@@ -18,39 +18,98 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 import jsu.cn.backGround.BackGround_JPanel;
-import jsu.cn.dao.first;
+import jsu.cn.dao.first_dao;
 import jsu.cn.file.r_RankingList;
 import jsu.cn.file.w_RankingList;
 import jsu.cn.itf.window_itf;
 import jsu.cn.tool.getResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user_firstPoint.
+ *第一关界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user_firstPoint implements window_itf,ActionListener {
+	
+	/** The nb. 数量*/
 	private int nb;
+	
+	/** The fc.分数 */
 	private int fc;
+	
+	/** The js. 时间*/
 	private int js;
+	
+	/** The flag. 输赢标记值*/
 	private int flag;
+	
+	/** The uri. 背景图片路径*/
 	private String uri;
+    
+    /** The ns. 昵称与性别*/
     private static String []ns;
+    
+    /** The left.左方图片 */
     private String []left;
+    
+    /** The right. 右方图片*/
     private String []right;
+    
+    /** The first point jf. 第一关窗口对象 */
     private JFrame firstPointJf;
+    
+    /** The first point jp. 可以添加图片的容器 */
     private BackGround_JPanel firstPointJp;
+    
+    /** The number. 数量*/
     private JLabel number;
+    
+    /** The number txt. 数量标签*/
     private JLabel numberTxt;
+    
+    /** The fraction. 分数*/
     private JLabel fraction;
+    
+    /** The fraction txt.分数标签 */
     private JLabel fractionTxt;
+    
+    /** The jishi. 时间*/
     private JLabel jishi;
+    
+    /** The jishi txt.时间标签 */
     private JLabel jishiTxt;
+    
+    /** The red jb.黄色按钮 */
     private JButton redJb;
+    
+    /** The blue jb. 男色按钮*/
     private JButton blueJb;
+	
+	/** The violet jb.紫色按钮 */
 	private JButton violetJb;
+	
+	/** The left jl. 左图片*/
 	private JLabel leftJl;
+	
+	/** The right jl. 又图片*/
 	private JLabel rightJl;
-	private JLabel add;
+	
+	/** The typeface. 字体*/
 	private Font typeface;
+	
+	/** The first point T. 计时器 */
 	private Timer firstPointT;
+	
+	/** The first point R. 随机对象 */
 	private Random firstPointR;
 	
+	/**
+	 * Instantiates a new user first point.
+	 * 实例化对象
+	 */
 	public user_firstPoint() {
 		voluation();
 		location();
@@ -65,6 +124,13 @@ public class user_firstPoint implements window_itf,ActionListener {
 		firstPointT.start();
 	}
 	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#voluation()
+	    */
+	    
 	@Override
 	public void voluation() {
 
@@ -94,12 +160,18 @@ public class user_firstPoint implements window_itf,ActionListener {
     violetJb = new JButton(new ImageIcon("C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\按钮\\紫色按钮.png"));
     leftJl = new JLabel(new ImageIcon(left[0]));
     rightJl = new JLabel(new ImageIcon(right[0]));
-    add = new JLabel("C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\按钮\\加一.jpg");
     typeface = new Font("宋体",Font.BOLD,28);
     firstPointT = new Timer(1000,this);
     firstPointR = new Random();
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#location()
+	    */
+	    
 	@Override
 	public void location() {
 
@@ -119,10 +191,15 @@ public class user_firstPoint implements window_itf,ActionListener {
 		blueJb.setBounds(340, 400, 100, 48);
 		leftJl.setBounds(160, 200, 56, 55);
 		rightJl.setBounds(320, 200, 56,55);
-		add.setBounds(260, 270, 123, 123);
-		add.setVisible(false);
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#addComponent()
+	    */
+	    
 	@Override
 	public void addComponent() {
 
@@ -141,6 +218,13 @@ public class user_firstPoint implements window_itf,ActionListener {
 		firstPointJf.add(firstPointJp);
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#setUp()
+	    */
+	    
 	@Override
 	public void setUp() {
 
@@ -158,7 +242,14 @@ public class user_firstPoint implements window_itf,ActionListener {
     jishiTxt.setFont(typeface);
     jishiTxt.setForeground(Color.RED);
 	}
-;
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#windowListener_Closing()
+	    */
+	    
 	@Override
 	public void windowListener_Closing() {
 		// TODO Auto-generated method stub
@@ -171,6 +262,15 @@ public class user_firstPoint implements window_itf,ActionListener {
 			}
 		});
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @param e
+	    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	    */
+	    
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int a=0;
@@ -187,7 +287,7 @@ public class user_firstPoint implements window_itf,ActionListener {
 			String middle=null;
 			int middle1;
 			int linshi4[]=new int[11];
-			first f= new first();
+			first_dao f= new first_dao();
 			linshi = f.yesOrNo(ns[0]);
 			if(linshi==0)
 				f.insertFirst(ns[0],fraction.getText());
@@ -238,8 +338,30 @@ public class user_firstPoint implements window_itf,ActionListener {
 			jishi.setText(String.valueOf(js));
 		}
 }
+	
+	/**
+	 * The listener interface for receiving myMouse events.
+	 * The class that is interested in processing a myMouse
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addmyMouseListener<code> method. When
+	 * the myMouse event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see myMouseEvent
+	 *       自定义的鼠标监听器
+	 */
 	class myMouseListener extends MouseAdapter {
-	         @Override
+	         
+         	
+         	    /* (非 Javadoc)
+         	    * 
+         	    * 
+         	    * @param e
+         	    * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+         	    */
+         	    
+         	@Override
 	        public void mouseClicked(MouseEvent e) {
 	        	// TODO Auto-generated method stub
 	        	if(e.getComponent()==redJb) {
@@ -271,6 +393,12 @@ public class user_firstPoint implements window_itf,ActionListener {
 	        	}
 	        }
 	}
+	
+	/**
+	 * Sets the nn and sex.
+	 *设置昵称与性别
+	 * @param ns1 昵称与性别
+	 */
 	public static void setNnAndSex(String []ns1) {
 		ns=ns1;
 	}

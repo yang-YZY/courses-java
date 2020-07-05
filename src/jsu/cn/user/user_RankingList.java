@@ -13,24 +13,68 @@ import jsu.cn.backGround.BackGround_JPanel;
 import jsu.cn.file.r_RankingList;
 import jsu.cn.itf.window_itf;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user_RankingList.
+ *  排行榜界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user_RankingList implements window_itf{
+	
+	/** The uri. 背景图片路径*/
 	private String uri;
+	
+	/** The ranking list jf.排行榜窗口对象 */
 	private JFrame rankingListJf;
+	
+	/** The point.选项卡窗格 */
 	private JTabbedPane point;
+	
+	/** The first. 第一关可以添加图片的容器*/
 	private BackGround_JPanel first;
+	
+	/** The second. 第二关可以添加图片的容器*/
 	private BackGround_JPanel second;
+	
+	/** The third. 第三关可以添加图片的容器*/
 	private BackGround_JPanel third;
+	
+	/** The fourth. 第四关可以添加图片的容器*/
 	private BackGround_JPanel fourth;
+	
+	/** The first number.第一关前10名标签 */
 	private JLabel firstNumber[];
+	
+	/** The first ranking. 第一关前10内容标签*/
 	private JLabel firstRanking[];
+	
+	/** The second number.第二关前10名标签 */
 	private JLabel secondNumber[];
+	
+	/** The second ranking. 第二关前10名内容标签*/
 	private JLabel secondRanking[];
+	
+	/** The third number. 第三关前10名标签*/
 	private JLabel thirdNumber[];
+	
+	/** The third ranking. 第三关前10名内容标签*/
 	private JLabel thirdRanking[];
+	
+	/** The fourth number. 第四关前10名标签*/
 	private JLabel fourthNumber[];
+	
+	/** The fourth ranking. 第四关前10名内容标签*/
 	private JLabel fourthRanking[];
+	
+	/** The typeface.字体 */
 	private Font typeface;
 
+/**
+ * Instantiates a new user ranking list.
+ * 实例化对象
+ */
 public user_RankingList() {
 	voluation();
 	location();
@@ -40,6 +84,14 @@ public user_RankingList() {
 	windowListener_Closing();
 	rankingListJf.setVisible(true);
 }
+
+
+    /* (非 Javadoc)
+    * 
+    * 
+    * @see jsu.cn.itf.window_itf#voluation()
+    */
+    
 public void voluation() {
 	uri = "C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\背景\\排行榜.png";
 	rankingListJf = new JFrame("排行榜");
@@ -69,6 +121,14 @@ public void voluation() {
 	}
 	typeface = new Font("宋体",Font.BOLD,16);
 }
+
+
+    /* (非 Javadoc)
+    * 
+    * 
+    * @see jsu.cn.itf.window_itf#location()
+    */
+    
 public void location() {
 	rankingListJf.setLayout(null);
 	first.setLayout(null);
@@ -92,6 +152,14 @@ public void location() {
 		fourthNumber[i].setBounds(320, i*40+10, 80, 30);
 	}
 }
+
+
+    /* (非 Javadoc)
+    * 
+    * 
+    * @see jsu.cn.itf.window_itf#setUp()
+    */
+    
 public void setUp() {
 	for(int i=0;i<=9;i++) {
 		firstRanking[i].setFont(typeface);
@@ -104,6 +172,11 @@ public void setUp() {
 		fourthNumber[i].setFont(typeface);
 	}
 }
+
+/**
+ * Show.
+ * 设置各名次的数据
+ */
 private void show() {
 	r_RankingList rwRL= new r_RankingList();
 	String flag[] = new String[10] ;
@@ -120,6 +193,14 @@ private void show() {
 			secondNumber[i].setText(flag1[i]);
 	}
 }
+
+
+    /* (非 Javadoc)
+    * 
+    * 
+    * @see jsu.cn.itf.window_itf#addComponent()
+    */
+    
 public void addComponent() {
 	for(int i=0;i<=9;i++) {
 		first.add(firstRanking[i]);
@@ -137,6 +218,14 @@ public void addComponent() {
 	point.addTab("第四关", fourth);
 	rankingListJf.add(point);
 }
+
+
+    /* (非 Javadoc)
+    * 
+    * 
+    * @see jsu.cn.itf.window_itf#windowListener_Closing()
+    */
+    
 public void windowListener_Closing() {
 	rankingListJf.addWindowListener(new WindowAdapter() {
     	  @Override

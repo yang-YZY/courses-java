@@ -13,21 +13,53 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import jsu.cn.backGround.BackGround_JPanel;
-import jsu.cn.dao.checkPoint;
+import jsu.cn.dao.checkPoint_dao;
 import jsu.cn.itf.window_itf;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user_Record.
+ *历史记录界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user_Record implements window_itf {
+		
+		/** The uri.背景图片路径 */
 		private String uri;
+		
+		/** The ns. 性别与 昵称*/
 		private static String []ns;
+		
+		/** The record jf. 历史记录窗口对象*/
 		private JFrame recordJf;
+		
+		/** The record jp. 可以添加图片的容器*/
 		private BackGround_JPanel recordJp;
+		
+		/** The point. 关卡标签*/
 		private JLabel point[];
+		
+		/** The number. 分数标签*/
 		private JLabel number[];
+		
+		/** The nick name jl. 昵称标签*/
 		private JLabel nickNameJl;
+		
+		/** The sex jl. 性别标签*/
 		private JLabel sexJl;
+		
+		/** The back. 返回按钮*/
 		private JButton back; 
+		
+		/** The typeface. 字体*/
 		private Font typeface;
 
+	/**
+	 * Instantiates a new user record.
+	 * 实例化对象
+	 */
 	public user_Record() {
 		voluation();
 		location();
@@ -38,6 +70,14 @@ public class user_Record implements window_itf {
 		actionListener_Back();
 		recordJf.setVisible(true);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#voluation()
+	    */
+	    
 	public void voluation() {
 	uri = "C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\背景\\记录.png";
 	recordJf = new JFrame("历史记录");
@@ -57,6 +97,14 @@ public class user_Record implements window_itf {
 	back = new JButton("返回");
 	typeface = new Font("宋体",Font.BOLD,16);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#location()
+	    */
+	    
 	public void location() {
 		recordJf.setLayout(null);
 		recordJp.setLayout(null);
@@ -74,6 +122,14 @@ public class user_Record implements window_itf {
 		nickNameJl.setBounds(330, 120, 60, 20);
 		back.setBounds(300, 440, 60, 30);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#addComponent()
+	    */
+	    
 	public void addComponent() {
 		for(int i=0;i<point.length;i++) {
 			recordJp.add(point[i]);
@@ -84,6 +140,14 @@ public class user_Record implements window_itf {
 		recordJp.add(back);
 		recordJf.add(recordJp);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#setUp()
+	    */
+	    
 	public void setUp() {
 		for(int i=0;i<point.length;i++) {
 			point[i].setFont(typeface);
@@ -91,13 +155,24 @@ public class user_Record implements window_itf {
 		}
 		nickNameJl.setFont(typeface);
 	}
+	
+	/**
+	 * Sets the nn and sex.
+	 *设置昵称与性别
+	 * @param ns1 昵称与性别
+	 */
 	public static void setNnAndSex(String []ns1) {
 		ns=ns1;
 	}
+	
+	/**
+	 * Show.
+	 * 设置内容
+	 */
 	private void show() {
 		int flag;
 		String flag1[] =new String[4];
-		checkPoint cp =new checkPoint();
+		checkPoint_dao cp =new checkPoint_dao();
 		flag=cp.getIndex(ns[0]);
 		if(flag!=0) {
 			flag1 = cp.getNumber(flag);
@@ -107,6 +182,14 @@ public class user_Record implements window_itf {
 		}
 		cp.closing();
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#windowListener_Closing()
+	    */
+	    
 	public void windowListener_Closing() {
 		recordJf.addWindowListener(new WindowAdapter() {
 	    	  @Override
@@ -116,6 +199,11 @@ public class user_Record implements window_itf {
 	    	}
 		});
 	}
+	
+	/**
+	 * Action listener back.
+	 * 为返回按钮添加动作监听器
+	 */
 	private void actionListener_Back(){
 		back.addActionListener(new ActionListener() {
 				@Override

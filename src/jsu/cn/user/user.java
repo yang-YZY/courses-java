@@ -19,19 +19,56 @@ import jsu.cn.itf.user_Itf;
 import jsu.cn.itf.window_itf;
 import jsu.cn.tool.checkRegister;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user.
+   *     用户初始界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user implements user_Itf,window_itf {
+	
+	/** The uri. 背景图片路劲  */
 	private String uri;
+	
+	/** The start J. 初始窗口*/
 	public static JFrame startJ;
+	
+	/** The start jp. 可以添加图片的容器 */
 	private BackGround_JPanel startJp;
+	
+	/** The welcome jl.  欢迎信息*/
 	private JLabel welcomeJl;
+	
+	/** The password jl. 密码标签*/
 	private JLabel passwordJl;
+	
+	/** The account jl.  账号标签*/
 	private JLabel accountJl;
+	
+	/** The password jt. 密码*/
 	private JPasswordField passwordJt;
+	
+	/** The account jt. 账号*/
 	private JTextField accountJt;
+	
+	/** The login bt. 登录按钮*/
 	private JButton loginBt;
+	
+	/** The register bt. 注册按钮*/
 	private JButton registerBt;
+	
+	/** The typeface. 字体*/
 	private Font typeface;
 	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.user_Itf#startWindow()
+	    */
+	    
 	@Override
 	public void startWindow() {
 		voluation();
@@ -43,6 +80,14 @@ public class user implements user_Itf,window_itf {
 	    windowListener_Closing();
 		startJ.setVisible(true);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.user_Itf#register()
+	    */
+	    
 	@Override
 	public void register() {
 		startJ.setVisible(false);
@@ -52,6 +97,14 @@ public class user implements user_Itf,window_itf {
 			user_Register user=new user_Register();
 		}
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.user_Itf#login()
+	    */
+	    
 	@Override
 	public void login() {
 		int flag;
@@ -59,8 +112,10 @@ public class user implements user_Itf,window_itf {
 		String s2= new String(passwordJt.getPassword());
 		flag= checkRegister.checkString(s1,s2);
 		if(flag==0) {
-			checkNews_dao cn=new checkNews_dao(2);
+			checkNews_dao cn=new checkNews_dao();
 			if(cn.checkIdAndPassword(s1, s2)) {
+				accountJt.setText("");
+				passwordJt.setText("");
 				startJ.setVisible(false);
 				String []ns=cn.getNnAndSex();
 				user_Login.setNnAndSex(ns);
@@ -75,6 +130,14 @@ public class user implements user_Itf,window_itf {
 			JOptionPane.showMessageDialog(startJ, "请把信息输入完整，否则不能进行验证!");
 		}
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#voluation()
+	    */
+	    
 	public void voluation() {
 		uri= new String("C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\背景\\初始背景.png");
 		startJ = new JFrame("极难游戏");
@@ -88,6 +151,14 @@ public class user implements user_Itf,window_itf {
 		registerBt = new JButton("注册");
 		typeface = new Font("宋体",Font.BOLD,15);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#location()
+	    */
+	    
 	public void location() {
 		startJ.setLayout(null);
 		startJp.setLayout(null);
@@ -101,6 +172,14 @@ public class user implements user_Itf,window_itf {
 		loginBt.setBounds(100, 280, 60,30);
 		registerBt.setBounds(220, 280, 60, 30);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#setUp()
+	    */
+	    
 	public void setUp() {
 		welcomeJl.setFont(typeface);
 		accountJl.setFont(typeface);
@@ -108,6 +187,14 @@ public class user implements user_Itf,window_itf {
 		passwordJl.setFont(typeface);
 		passwordJt.setFont(typeface);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#addComponent()
+	    */
+	    
 	public void addComponent() {
 		startJp.add(welcomeJl);
 		startJp.add(accountJl);
@@ -118,9 +205,22 @@ public class user implements user_Itf,window_itf {
 	    startJp.add(registerBt);
 	    startJ.add(startJp);
 	}
+	
+	/**
+	 * Opening. 
+	 *     打开初始界面
+	 */
 	public static void opening() {
 		startJ.setVisible(true);
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#windowListener_Closing()
+	    */
+	    
 	public void windowListener_Closing() {
 		 startJ.addWindowListener(new WindowAdapter() {
 	    	  @Override
@@ -130,6 +230,11 @@ public class user implements user_Itf,window_itf {
 	    	}
 		});
 	}
+	
+	/**
+	 * Action listener register bt.
+	 * 为注册按钮添加动作监听器
+	 */
 	private void actionListener_RegisterBt() {
 		 registerBt.addActionListener(new ActionListener() {
 				@Override
@@ -139,6 +244,10 @@ public class user implements user_Itf,window_itf {
 			});
 	}
 	
+	/**
+	 * Action listener login bt.
+	 * 为登录按钮添加动作监听器
+	 */
 	private void actionListener_LoginBt() {
 		loginBt.addActionListener(new ActionListener() {	
 			@Override

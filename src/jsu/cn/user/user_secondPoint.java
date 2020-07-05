@@ -23,26 +23,74 @@ import jsu.cn.file.r_RankingList;
 import jsu.cn.file.w_RankingList;
 import jsu.cn.itf.window_itf;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user_secondPoint.
+ *第二关界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user_secondPoint implements ActionListener,window_itf {
+	
+	/** The nb. 数量*/
 	private int nb;
+	
+	/** The fc. 分数*/
 	private int fc;
+	
+	/** The js. 时间*/
 	private int js;
+	
+	/** The flag. 计分标记值*/
 	private int flag;
+	
+	/** The uri. 背景图片路径*/
 	private String uri;
+    
+    /** The ns.昵称与性别 */
     private static String []ns;
+    
+    /** The second point jf. 第二关窗口对象 */
     private JFrame secondPointJf;
+    
+    /** The second point jp.可以添加图片的容器 */
     private BackGround_JPanel secondPointJp;
+    
+    /** The number. 数量*/
     private JLabel number;
+    
+    /** The number txt.数量标签 */
     private JLabel numberTxt;
+    
+    /** The fraction. 分数*/
     private JLabel fraction;
+    
+    /** The fraction txt.分数标签 */
     private JLabel fractionTxt;
+    
+    /** The jishi. 时间*/
     private JLabel jishi;
+    
+    /** The jishi txt. 时间标签*/
     private JLabel jishiTxt;
+    
+    /** The finish jb. 结束游戏按钮*/
     private JButton finishJb;
+    
+    /** The face. 耳光按钮*/
     private JButton face;
+    
+    /** The typeface.字体 */
     private Font typeface;
+    
+    /** The second point T.计时器 */
     private Timer secondPointT;
     
+    /**
+     * Instantiates a new user second point.
+     * 实例化 对象
+     */
     public user_secondPoint() {
     	voluation();
 		location();
@@ -55,6 +103,14 @@ public class user_secondPoint implements ActionListener,window_itf {
 		secondPointT.start();
     	
     }
+    
+    
+        /* (非 Javadoc)
+        * 
+        * 
+        * @see jsu.cn.itf.window_itf#voluation()
+        */
+        
     @Override
     public void voluation() {
     	// TODO Auto-generated method stub
@@ -77,6 +133,14 @@ public class user_secondPoint implements ActionListener,window_itf {
     	 secondPointT = new Timer(1000,this);
     	 
     }
+    
+    
+        /* (非 Javadoc)
+        * 
+        * 
+        * @see jsu.cn.itf.window_itf#location()
+        */
+        
     @Override
     public void location() {
     	// TODO Auto-generated method stub
@@ -93,6 +157,14 @@ public class user_secondPoint implements ActionListener,window_itf {
 		face.setBounds(270, 260, 65, 65);
 		finishJb.setBounds(260,340 , 100,48 );
     }
+    
+    
+        /* (非 Javadoc)
+        * 
+        * 
+        * @see jsu.cn.itf.window_itf#addComponent()
+        */
+        
     @Override
     public void addComponent() {
     	// TODO Auto-generated method stub
@@ -106,6 +178,14 @@ public class user_secondPoint implements ActionListener,window_itf {
     	secondPointJp.add(finishJb);
     	secondPointJf.add(secondPointJp);
     }
+    
+    
+        /* (非 Javadoc)
+        * 
+        * 
+        * @see jsu.cn.itf.window_itf#setUp()
+        */
+        
     @Override
     public void setUp() {
     	// TODO Auto-generated method stub
@@ -122,6 +202,14 @@ public class user_secondPoint implements ActionListener,window_itf {
     	    jishiTxt.setFont(typeface);
     	    jishiTxt.setForeground(Color.RED);
     }
+    
+    
+        /* (非 Javadoc)
+        * 
+        * 
+        * @see jsu.cn.itf.window_itf#windowListener_Closing()
+        */
+        
     @Override
     public void windowListener_Closing() {
     	// TODO Auto-generated method stub
@@ -183,6 +271,11 @@ public class user_secondPoint implements ActionListener,window_itf {
 			}
 		});
     }
+    
+    /**
+     * Mouse listener face.
+     * 为耳光添加鼠标监听器
+     */
     public void mouseListener_Face() {
     	face.addMouseListener(new MouseAdapter() {
     		@Override
@@ -197,6 +290,11 @@ public class user_secondPoint implements ActionListener,window_itf {
     		}
 		});
     }
+    
+    /**
+     * Action listener finish jb.
+     *      为结束游戏按钮添加动作事件
+     */
     public void actionListener_FinishJb(){
     	finishJb.addActionListener(new ActionListener() {		
 			@Override
@@ -215,6 +313,15 @@ public class user_secondPoint implements ActionListener,window_itf {
 			}
 		});
     }
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @param e
+	    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	    */
+	    
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -231,6 +338,12 @@ public class user_secondPoint implements ActionListener,window_itf {
 			jishi.setText(String.valueOf(js));
 		}
 	}
+	
+	/**
+	 * Sets the nn and sex.
+	 *设置昵称与性别
+	 * @param ns1 昵称与性别
+	 */
 	public static void setNnAndSex(String []ns1) {
 		ns=ns1;
 	}

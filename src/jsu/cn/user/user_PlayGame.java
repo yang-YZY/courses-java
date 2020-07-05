@@ -11,19 +11,47 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import jsu.cn.backGround.BackGround_JPanel;
-import jsu.cn.dao.checkPoint;
+import jsu.cn.dao.checkPoint_dao;
 import jsu.cn.itf.window_itf;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class user_PlayGame.
+ *  选择关卡界面
+ * @date 2020-7-5
+ * @author YZY
+ * @version  v1.0
+ */
 public class user_PlayGame implements window_itf {
+	
+	/** The ns. 昵称与性别*/
 	private static String []ns;
+	
+	/** The fail.失败关卡图片 */
 	private String fail[];
+	
+	/** The success.成功关卡图片 */
 	private String success[];
+	
+	/** The uri. 背景图片路径*/
 	private String uri;
+	
+	/** The max. 最大选择关卡数*/
 	private int max;
+	
+	/** The play game jf. 关卡窗口对象*/
 	private JFrame playGameJf;
+	
+	/** The play game jp.可以添加图片的容器 */
 	private BackGround_JPanel playGameJp;
+	
+	/** The point. 关卡标签*/
 	private JLabel point[];
    
+	/**
+	 * Instantiates a new user play game.
+	 * 实例化对象
+	 */
 	public user_PlayGame() {
 		 voluation();
 		 location();
@@ -36,6 +64,14 @@ public class user_PlayGame implements window_itf {
 		 windowListener_Closing();
 		 playGameJf.setVisible(true);
 	 }
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#voluation()
+	    */
+	    
 	@Override
 	public void voluation() {
 	uri = "C:\\Users\\ASUS\\Desktop\\java课程设计\\java课程设计素材\\背景\\关卡背景.jpg";
@@ -56,6 +92,13 @@ public class user_PlayGame implements window_itf {
 		point[i] = new JLabel();
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#location()
+	    */
+	    
 	@Override
 	public void location() {
 		playGameJf.setLayout(null);
@@ -66,11 +109,19 @@ public class user_PlayGame implements window_itf {
 			point[i].setBounds(60+i*170, 120, 150, 170);
 		}
 	}
+	
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#addComponent()
+	    */
+	    
 	@Override
 	public void addComponent() {
 		// TODO Auto-generated method stub
 		int flag;
-		checkPoint cp = new checkPoint();
+		checkPoint_dao cp = new checkPoint_dao();
 		flag = cp.getIndex(ns[0]);
 		for(int i=0;i<flag;i++) {
 		    point[i].setIcon(new ImageIcon(success[i]));
@@ -85,12 +136,26 @@ public class user_PlayGame implements window_itf {
 	    max=flag;
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#setUp()
+	    */
+	    
 	@Override
 	public void setUp() {
 		// TODO Auto-generated method stub
        ;
 	}
 
+	
+	    /* (非 Javadoc)
+	    * 
+	    * 
+	    * @see jsu.cn.itf.window_itf#windowListener_Closing()
+	    */
+	    
 	@Override
 	public void windowListener_Closing() {
 		// TODO Auto-generated method stub
@@ -103,11 +168,39 @@ public class user_PlayGame implements window_itf {
 		}
 		});
 	}
+    
+    /**
+     * Sets the nn and sex.
+     *设置昵称与姓名
+     * @param ns1 昵称与姓名
+     */
     public static void setNnAndSex(String []ns1) {
     	ns=ns1;
     }
+    
+    /**
+     * The listener interface for receiving myMouse events.
+     * The class that is interested in processing a myMouse
+     * event implements this interface, and the object created
+     * with that class is registered with a component using the
+     * component's <code>addmyMouseListener<code> method. When
+     * the myMouse event occurs, that object's appropriate
+     * method is invoked.
+     *
+     * @see myMouseEvent
+              * 自定义的鼠标监听器
+     */
     class myMouseListener extends MouseAdapter{
-    	@Override
+    	
+	    
+	        /* (非 Javadoc)
+	        * 
+	        * 
+	        * @param e
+	        * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+	        */
+	        
+	    @Override
     	public void mouseClicked(MouseEvent e) {
     		// TODO Auto-generated method stub
     		if(e.getComponent()==point[0]) {
